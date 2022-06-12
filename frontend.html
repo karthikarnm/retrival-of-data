@@ -1,0 +1,77 @@
+<html>
+    <title>frontend</title>
+    <head>
+    </head>
+
+ <style>
+     .container{
+       background-color: rgb(227, 244, 244); 
+       height: 100%;
+       width: 100%; 
+     }
+     .middle{
+         height: 200px;
+         width:300px;
+         background-color:azure;
+        justify-content: center;
+        padding: 40px;
+        border-radius: 20px;
+        border-style: groove;
+     }
+     #button{
+        background-color: rgb(131, 86, 27);
+        height: 50px;
+        width: 100px;
+        border-style: groove;
+        border-radius: 20px;
+     }
+ </style>
+
+
+    <body>
+        <div class ="container">
+            <center>
+            <div class="middle">
+                <h1 style=" border-style: groove;">
+                    USERS DATA
+                </h1>
+            
+            <button type="submit" value="submit" id="button" onclick="veiw()">submit</button>
+</div></center>
+<div id="data">thae data will be<br><
+
+
+</div>
+        </div>
+    </body>
+</html>
+
+<script>
+
+    function veiw(){
+  var data = document.getElementById("data")
+
+
+ var htmlString=""
+
+        // alert("working")
+        let fetchRes = fetch(
+"https://jsonplaceholder.typicode.com/users");
+  
+       
+        fetchRes.then(res =>
+            res.json()).then(d => {
+                console.log(d)
+        for (var i=0;i<d.length;i++)
+        {
+           
+            htmlString += "my name is " +  d[i].name + d[i].username + "i live in "+d[0].address.city +" u  can contact me at  " +d[i].email+ "<br>"
+            
+        }
+
+  data .innerHTML=htmlString
+
+    })
+}
+       
+</script>
